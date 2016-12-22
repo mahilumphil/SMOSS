@@ -32,49 +32,50 @@
     </div>
 }*@
 @Styles.Render("~/Content/css")
+@Styles.Render("~/font-awesome/css")
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <form action="/" method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="uname" value="" placeholder="Username.." />
+     @Html.Partial("HomeHeader")
+   
+    <br/><br /><br /><br /><br /><br /><br />
+     <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <form action="/" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="uname" value="" placeholder="Username.." />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" value="" placeholder="Email.." />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" value="" placeholder="Password.." />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="retpassword" value="" placeholder="Re-Type Password.." />
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="10" cols="20" class="form-control" name="address" placeholder="Address.."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="contactno" value="" placeholder="Contact No..." />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="typeofbusiness" value="" placeholder="Types of Business.." />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="website" value="" placeholder="Websites..." />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-primary form-control">Submit</button>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="submit" class="btn btn-danger form-control">Clear Field</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" value="" placeholder="Email.." />
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password" value="" placeholder="Password.." />
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="retpassword" value="" placeholder="Re-Type Password.." />
-                </div>
-                <div class="form-group">
-                    <textarea rows="10" cols="20" class="form-control" name="address" placeholder="Address.."></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="contactno" value="" placeholder="Contact No..." />
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="typeofbusiness" value="" placeholder="Types of Business.." />
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="website" value="" placeholder="Websites..." />
-                </div>
-                <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-primary form-control">Submit</button>
-                </div>
-                <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-danger form-control">Clear Field</button>
-                </div>
-            </form>
+            </div>  
         </div>
-        <div class="col-md-8">
-            <img src="~/img/2.jpg"/>
-        </div>
-    </div>
-</div>
-
+        @Html.Partial("HomeFooter")
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

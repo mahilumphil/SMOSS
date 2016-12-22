@@ -31,7 +31,13 @@ namespace SystemProject
                       "~/Content/bootstrap.min.css",
                       "~/Content/bootstrap-theme.css",
                       "~/Content/bootstrap-theme.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/stylish-portfolio.css"
+                      ));
+
+            bundles.Add(new StyleBundle("~/font-awesome/css").Include(
+                     "~/font-awesome/css/font-awesome.css",
+                     "~/font-awesome/css/font-awesome.min.css"
+                    ));
         }
     }
 }
