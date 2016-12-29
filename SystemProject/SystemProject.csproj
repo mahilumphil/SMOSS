@@ -172,7 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UserRegistrationControllerApi.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Data\projectdb.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,6 +202,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="img\1.jpg" />
     <Content Include="img\2.jpg" />
+    <Content Include="img\3.jpg" />
+    <Content Include="img\4.jpg" />
     <Content Include="img\bg.jpg" />
     <Content Include="img\callout.jpg" />
     <Content Include="img\logo.png" />
