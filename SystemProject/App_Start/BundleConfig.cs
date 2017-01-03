@@ -9,7 +9,8 @@ namespace SystemProject
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"
@@ -25,7 +26,9 @@ namespace SystemProject
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/jquery.js",
                       "~/Scripts/menu.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/map.js"
+                        ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -34,6 +37,7 @@ namespace SystemProject
                       "~/Content/bootstrap-theme.min.css",
                       "~/Content/stylish-portfolio.css"
                       ));
+
 
             bundles.Add(new StyleBundle("~/font-awesome/css").Include(
                      "~/font-awesome/css/font-awesome.css",

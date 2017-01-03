@@ -151,7 +151,12 @@ namespace SystemProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                //var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    Email = model.Email
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -163,7 +168,25 @@ namespace SystemProject.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //Data.smartshopdbDataContext db = new Data.smartshopdbDataContext();
+                    //Data.user userDetail = new Data.user();
+
+                    //userDetail.id = model.Id;
+                    //userDetail.email = model.Email;
+                    //userDetail.password = model.Password;
+                    //userDetail.ret_password = model.RetPassword;
+                    //userDetail.name = model.Name;
+                    //userDetail.address = model.Address;
+                    //userDetail.contact_number = model.ContactNumber;
+                    //userDetail.date_created = model.DateCreated(DateTime.Now);
+                    //userDetail.date_updated = model.DateUpdated(DateTime.Now);
+                    //userDetail.is_active = model.Active;
+
+                    //db.users.InsertOnSubmit(userDetail);
+                    //db.SubmitChanges();
+                    
+
+                    return RedirectToAction("Index", "Main");
                 }
                 AddErrors(result);
             }

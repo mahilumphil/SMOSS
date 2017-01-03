@@ -79,6 +79,34 @@ namespace SystemProject.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public int Id { get; set; }
+
+        public string RetPassword { get; set; }
+
+        public System.DateTime DateTime { get; set; }
+
+        public string ContactNumber { get; set; }
+
+        public string Address { get; set; }
+
+        public string Name { get; set; }
+
+        public bool Active { get; set; }
+
+        public System.DateTime DateCreated { get; set; }
+
+        public System.DateTime DateUpdated { get; set; }
+
+        internal System.DateTime DateCreated(System.DateTime created)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        internal System.DateTime DateUpdated(System.DateTime updated)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public class ResetPasswordViewModel
