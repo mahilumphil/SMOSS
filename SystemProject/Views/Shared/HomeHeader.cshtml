@@ -1,18 +1,33 @@
 ﻿@Styles.Render("~/Content/css")
 @Styles.Render("~/font-awesome/css")
-
 <div class="container-fluid navbar navbar-default navbar-fixed-top">
-    <div class="row">
-        <div class="col-md-4">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="../Home/Index"><img src="~/img/logo.png" id="img"/></a>
-                    </div>
+    <div class="navbar-primary navbar-fixed-top" style="background-color:#3E3D3F; height:23px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p style="color:white;"><span class="fa fa-phone fa fw"></span> Contact number: #0999999999</p>
+                </div>
+                <div class="col-md-4" id="font-span">
+                    <a href="#"><span class="fa fa-facebook fa fw" ></span></a>
+                    <a href="#"><span class="fa fa-twitter fa fw" ></span></a>
+                    <a href="#"><span class="fa fa-instagram fa fw"></span></a>
+                </div>
+                <div class="col-md-4">
+                    <p class="btn-info text-center" style="width:50%; border-radius:2px; border:1px solid grey;"><a href="../Account/Login" style="color:white; text-decoration:none;">Login here..</a></p>
+                </div>
+            </div>
+      
         </div>
-       <div class="col-md-4">
-           
-       </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../Home/Index"><img src="~/img/logo.png" id="img" /></a>
+            </div>
+        </div>
+        @Scripts.Render("~/bundles/bootstrap")
         <div class="col-md-4">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" >
                 <li><a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a></li>
             </ul>
             <!-- Navigation -->
@@ -23,24 +38,26 @@
                     </li>
 
                     <li>
-                        <a href="#top" onclick=$("#menu-close").click();>Home</a>
+                        <a href="#top" onclick=$("#menu-close").click();><span class="fa fa-home fa fw"></span> Home</a>
                     </li>
                     <li>
-                        <a href="#about" onclick=$("#menu-close").click();>About</a>
+                        <a href="#about" onclick=$("#menu-close").click();><span class="fa fa-info-circle fa fw"></span> About</a>
                     </li>
                     <li>
-                        <a href="#services" onclick=$("#menu-close").click();>Services</a>
+                        <a href="#services" onclick=$("#menu-close").click();><span class="fa fa-th-list fa fw"></span> Services</a>
                     </li>
                     <li>
-                        <a href="#portfolio" onclick=$("#menu-close").click();>Team</a>
+                        <a href="#contact" onclick=$("#menu-close").click();><span class="fa fa-phone fa fw"></span> Contact</a>
                     </li>
                     <li>
-                        <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
+                        <a href="#team" onclick=$("#menu-close").click();><span class="fa fa-user-secret fa fw"></span> Team</a>
                     </li>
-
+                    <li class="login">
+                        <a href="../Account/Login"><span class="fa fa-user fa fw text-center"></span> Login</a>
+                    </li>
                 </ul>
+                
             </nav>
-            @Scripts.Render("~/bundles/bootstrap")
         </div>
     </div>
 </div>

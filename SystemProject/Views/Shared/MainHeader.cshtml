@@ -1,13 +1,19 @@
-﻿<div class="panel-heading">
+﻿@Styles.Render("~/Content/css")
+@Styles.Render("~/font-awesome/css")
+
+<div class="container-fluid navbar navbar-default navbar-fixed-top">
     <div class="row">
         <div class="col-md-4">
-
+            
         </div>
         <div class="col-md-4">
-            Search: <input type="search" name="searchbox" value=" " placeholder="Looking For Items?" class="form-control"/>
+        <br />
+            Search: <input type="search" name="searchbox" value=" " placeholder="Looking For Items?" class="form-control" />
         </div>
         <div class="col-md-4">
-
+           
         </div>
     </div>
 </div>
+@Scripts.Render("~/bundles/bootstrap")
+

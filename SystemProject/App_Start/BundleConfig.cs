@@ -27,7 +27,7 @@ namespace SystemProject
                       "~/Scripts/jquery.js",
                       "~/Scripts/menu.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/map.js"
+                      "~/Scripts/toastr.min.js"
                         ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -35,7 +35,8 @@ namespace SystemProject
                       "~/Content/bootstrap.min.css",
                       "~/Content/bootstrap-theme.css",
                       "~/Content/bootstrap-theme.min.css",
-                      "~/Content/stylish-portfolio.css"
+                      "~/Content/stylish-portfolio.css",
+                      "~/Content/toastr.min.css"
                       ));
 
 
