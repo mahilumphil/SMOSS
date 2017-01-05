@@ -9,37 +9,38 @@
                 <form>
                     <h3>Add Post Here</h3>
                     <div class="form-group">
-                        <input type="text" name="posttitle" value=" " class="form-control" />
+                        <input type="text" name="posttitle" value=" " class="form-control required" placeholder="asdasd" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="category">
                         <select class="form-control">
                             <optgroup label="T-shirt">
-                                <option label="">Round neck</option>
-                                <option label="">V neck</option>
-                                <option label="">Button neck</option>
+                                <option label="">Category</option>
                             </optgroup>
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="15" cols="20" placeholder="Description"></textarea>
+                        <textarea class="form-control" rows="15" cols="20" placeholder="Item Details"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="contactper" value=" " class="form-control" />
+                        <input type="text" name="contactper" value=" " class="form-control required" placeholder="Contact Person" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="contactnos" value=" " class="form-control" />
+                        <input type="text" name="contactnos" value=" " class="form-control required" placeholder="Contact Number" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="contactnos" value=" " class="form-control" />
+                        <input type="text" name="website" value=" " class="form-control required" placeholder="Website or Facebook Pages" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="contactnos" value=" " class="form-control" placeholder="Websites" />
+                        <input type="date" name="contactnos" value=" " class="form-control required" placeholder="Date Created" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-defalt text-center " name="img" id="img">Images</button>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success btn-block" name="addpost">Add Post</button>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-block" name="addpost">Reset</button>
+                        <button type="submit" class="btn btn-danger btn-block" name="addpost" onclick="addPost()">Reset</button>
                     </div>
                 </form>
             </div>
@@ -52,7 +53,6 @@
                         <h1>Post here..</h1>
                         <hr />
                         <div class="row">
-                            <hr />
                             <div class="col-md-12">
 
                             </div>
@@ -67,7 +67,7 @@
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-6" style="height:200px; border:1px solid black;" id="postdiv">
-                        <p>123123</p>
+                        <p>ads</p>
                     </div>
                     <div class="col-md-3">
                     </div>
@@ -78,3 +78,28 @@
 </div>
 @Html.Partial("HomeFooter")
 @Scripts.Render("~/bundles/bootstrap")
+<script type="text/javascript">
+    function addPost() {
+
+
+
+        function requiredField() {
+            var isValid = true;
+            $('.requiredField').each(function () {
+                if ($.trim($(this).val()) == '') {
+                    isValid = false;
+                    $(this).css({
+                        "border": "1px solid red"
+                    });
+                } else {
+                    $(this).css({
+                        "border": "",
+                    });
+                }
+            });
+
+            return isValid;
+        }
+    }
+
+</script>

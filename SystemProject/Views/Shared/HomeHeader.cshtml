@@ -1,5 +1,6 @@
 ﻿@Styles.Render("~/Content/css")
 @Styles.Render("~/font-awesome/css")
+
 <div class="container-fluid navbar navbar-default navbar-fixed-top">
     <div class="navbar-primary navbar-fixed-top" style="background-color:#3E3D3F; height:23px;">
         <div class="container">
@@ -8,15 +9,18 @@
                     <p style="color:white;"><span class="fa fa-phone fa fw"></span> Contact number: #0999999999</p>
                 </div>
                 <div class="col-md-4" id="font-span">
-                    <a href="#"><span class="fa fa-facebook fa fw" ></span></a>
-                    <a href="#"><span class="fa fa-twitter fa fw" ></span></a>
+                    <a href="#"><span class="fa fa-facebook fa fw"></span></a>
+                    <a href="#"><span class="fa fa-twitter fa fw"></span></a>
                     <a href="#"><span class="fa fa-instagram fa fw"></span></a>
                 </div>
-                <div class="col-md-4">
-                    <p class="btn-info text-center" style="width:50%; border-radius:2px; border:1px solid grey;"><a href="../Account/Login" style="color:white; text-decoration:none;">Login</a></p>
+                <div class="col-md-2">
+                    <p class="btn-success text-center" style="width:100%; border-radius:2px; border:1px solid grey;">@Html.ActionLink("Go To Main", "Main", "Home")</p>
+                </div>
+                <div class="col-md-2">
+                    <p class="btn-info text-center" style="width:100%; border-radius:2px; border:1px solid grey;">@Html.ActionLink("Login", "Login", "Account")</p>
                 </div>
             </div>
-      
+
         </div>
     </div>
     <div class="row">
@@ -27,7 +31,7 @@
         </div>
         @Scripts.Render("~/bundles/bootstrap")
         <div class="col-md-4">
-            <ul class="nav navbar-nav navbar-right" >
+            <ul class="nav navbar-nav navbar-right">
                 <li><a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a></li>
             </ul>
             <!-- Navigation -->
@@ -55,8 +59,17 @@
                     <li class="login">
                         <a href="../Account/Login"><span class="fa fa-user fa fw text-center"></span> Login</a>
                     </li>
+                    <li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            }
+                        }
+                    </li>
                 </ul>
-                
             </nav>
         </div>
     </div>

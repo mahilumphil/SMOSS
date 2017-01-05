@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace SystemProject.Controllers
 {
+    
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -30,5 +31,6 @@ namespace SystemProject.Controllers
             return View();
         }
 
+    
     }
 }
