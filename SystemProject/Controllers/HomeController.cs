@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace SystemProject.Controllers
 {
-    
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -25,12 +26,10 @@ namespace SystemProject.Controllers
 
             return View();
         }
+        [Authorize]
         public ActionResult Main()
         {
-
             return View();
         }
-
-    
     }
 }

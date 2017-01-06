@@ -10,17 +10,19 @@
 <br /><br /><br /><br />
 <div class="panel-body">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
             <div class="registration-form">
                 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <h4>Create a new account.</h4>
-                    <hr />
+                    <h4>Create new account</h4>
                     @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                             </div>
@@ -29,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                             </div>
@@ -38,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
                                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                             </div>
@@ -47,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
+                            @Html.LabelFor(m => m.FullName, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
                                 @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
                             </div>
@@ -56,31 +58,34 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+                            @Html.LabelFor(m => m.Address, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
                                 @Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
                             </div>
                         </div>
-                       
+
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(m => m.ContactNumber, new { @class = "col-md-2 control-label" })
+                            @Html.LabelFor(m => m.ContactNumber, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
                                 @Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control" })
                             </div>
                         </div>
-                           
+
                     </div>
                     <div class="form-group">
-                        <div class="col-md-12">
-                            <input type="submit" class="btn btn-default form-control" value="Register" />
+                        <div class="col-md-12" style="background-color:rgba(0,0,0,0.1); height:150px; border-radius:10px;">
+                            <input type="submit" class="btn btn-success" value="Register" style="margin-left:25%; margin-top:9%; width:50%;"/>
                         </div>
+                        
                     </div>
                 }
             </div>
         </div>
-        <div class="col-md-8"></div>
+        <div class="col-md-4">
+
+        </div>
 
     </div>
 </div>
