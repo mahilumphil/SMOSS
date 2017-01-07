@@ -1,7 +1,11 @@
-﻿@model SystemProject.Models.RegisterViewModel
-
-
-
+﻿@{
+                                var placeholder = string.Empty;
+                                if (ViewData.ModelMetadata.AdditionalValues.ContainsKey("placeholder"))
+                                {
+                                    placeholder = ViewData.ModelMetadata.AdditionalValues["placeholder"] as string;
+                                }
+                                
+}
 @Styles.Render("~/Content/css")
 @Styles.Render("~/font-awesome/css")
 
@@ -15,6 +19,7 @@
         </div>
         <div class="col-md-4">
             <div class="registration-form">
+                @model SystemProject.Models.RegisterViewModel
                 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
@@ -24,16 +29,15 @@
                         <div class="row">
                             @Html.LabelFor(m => m.Email, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email as Username" })
                             </div>
                         </div>
-
                     </div>
                     <div class="form-group">
                         <div class="row">
                             @Html.LabelFor(m => m.Password, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" , placeholder = "Password"})
                             </div>
                         </div>
 
@@ -42,7 +46,7 @@
                         <div class="row">
                             @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
-                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
                             </div>
                         </div>
 
@@ -51,7 +55,7 @@
                         <div class="row">
                             @Html.LabelFor(m => m.FullName, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
-                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Fullname" })
                             </div>
                         </div>
 
@@ -60,7 +64,7 @@
                         <div class="row">
                             @Html.LabelFor(m => m.Address, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
-                                @Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
+                                @Html.TextAreaFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
                             </div>
                         </div>
 
@@ -69,16 +73,24 @@
                         <div class="row">
                             @Html.LabelFor(m => m.ContactNumber, new { @class = "col-md-1 control-label" })
                             <div class="col-md-12">
-                                @Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control" })
+                                @Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control", placeholder = "Contact Number" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(m => m.Websites, new { @class = "col-md-1 control-label" })
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Websites, new { @class = "form-control", placeholder = "Websites or Others" })
                             </div>
                         </div>
 
                     </div>
                     <div class="form-group">
                         <div class="col-md-12" style="background-color:rgba(0,0,0,0.1); height:150px; border-radius:10px;">
-                            <input type="submit" class="btn btn-success" value="Register" style="margin-left:25%; margin-top:9%; width:50%;"/>
+                            <input type="submit" class="btn btn-success" value="Register" style="margin-left:25%; margin-top:9%; width:50%;" />
                         </div>
-                        
+
                     </div>
                 }
             </div>

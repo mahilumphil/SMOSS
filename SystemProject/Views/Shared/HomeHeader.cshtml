@@ -1,8 +1,7 @@
 ﻿@Styles.Render("~/Content/css")
 @Styles.Render("~/font-awesome/css")
-
-<div class="container-fluid navbar navbar-default navbar-fixed-top">
-    <div class="navbar-primary navbar-fixed-top" style="background-color:#3E3D3F; height:23px;">
+<div class="navbar-default navbar-fixed-top">
+    <div class="navbar-primary navbar-fixed-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -13,51 +12,61 @@
                     <a href="#"><span class="fa fa-twitter fa fw"></span></a>
                     <a href="#"><span class="fa fa-instagram fa fw"></span></a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     @if (Request.IsAuthenticated)
                     {
-                        <p class="btn-success text-center" style="width:100%; border-radius:2px; border:1px solid grey;">@Html.ActionLink("Go To Main", "Main", "Home")</p>
-                    }
-                </div>
-                <div class="col-md-2">
-                    @if (Request.IsAuthenticated)
-                    {
-                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                        {
-                            @Html.AntiForgeryToken()
-                    <p class="btn-danger text-center" style="width:100%; border-radius:2px; border:1px solid grey;"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></p>
-                        }
-                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="btn-info text-center main-btn" style="width:100%; border-radius:2px; border:1px solid grey;">@Html.ActionLink("Go To Main", "Main", "Home")</p>
+                            </div>
+                            <div class="col-md-6">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <p class="btn-danger text-center logoff-btn" style="width:100%; border-radius:2px; border:1px solid grey;"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></p>
+                                    }
+                                }
+                            </div>
+                        </div>
                     }
                     else
                     {
-                        <p class="btn-info text-center" style="width:100%; border-radius:2px; border:1px solid grey;">@Html.ActionLink("Login", "Login", "Account")</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="btn-success text-center visitor-btn" style="width:100%; border-radius:2px; border:1px solid grey; ">@Html.ActionLink("Continue as Visitor", "VisitorDetails", "Account")</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="btn-default text-center login-btn" style="width:100%; border-radius:2px; border:1px solid grey; ">@Html.ActionLink("Login", "Login", "Account")</p>
+                            </div>
+                        </div>
                     }
                 </div>
             </div>
 
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-2">
-            <div class="navbar-header" style="margin-top:5px;">
+
+    <div class="row" id="login-header">
+        <div class="col-md-2">
+            @*@using Microsoft.AspNet.Identity
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="" id="User">
+
+                    </div>
+                    <p id="User-menu">Good day!</p><a href="~/Home/Main">@ViewData["UserName"]</a>
+                }*@
+        </div>
+        <div class="col-md-4">
+            <div class="navbar-header">
                 <a class="navbar-brand" href="../Home/Index"><img src="~/img/logo.png" id="img" /></a>
             </div>
         </div>
-        <div class="col-md-2">
-            @using Microsoft.AspNet.Identity
-            @if (Request.IsAuthenticated)
-            {
-                @Html.AntiForgeryToken()
-                <div class="" id="User">
-
-                </div>
-                <p id="User-menu">Good day!</p><a href="~/Home/Main">@ViewData["UserName"]</a>
-            }
-
-        </div>
         @Scripts.Render("~/bundles/bootstrap")
-        <div class="col-md-2">
+        <div class="col-md-4">
             <ul class="nav navbar-nav navbar-right">
                 <li><a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a></li>
             </ul>
@@ -67,7 +76,19 @@
                     <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
                     <li class="sidebar-brand">
                     </li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <p class="btn btn-lg btn-danger text-center" id="nav-user-btn"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></p>
+                        }
 
+                    }
+                    else
+                    {
+                        <p class="btn btn-lg btn-default text-center" id="nav-user-btn">@Html.ActionLink("Login", "Login", "Account")</p>
+                    }
                     <li>
                         <a href="#top" onclick=$("#menu-close").click();><span class="fa fa-home fa fw"></span> Home</a>
                     </li>
@@ -83,25 +104,40 @@
                     <li>
                         <a href="#team" onclick=$("#menu-close").click();><span class="fa fa-user-secret fa fw"></span> Team</a>
                     </li>
-                    <li class="login">
-                        <a href="../Account/Login"><span class="fa fa-user fa fw text-center"></span> Login</a>
-                    </li>
-                    <li>
-                        @if (Request.IsAuthenticated)
-                        {
-                            
-                        }
-                    </li>
+
                 </ul>
             </nav>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    window.onload = function () {
-        var fullName = "@ViewData["UserName"]"
-        console.log(fullName);
-    }
 
-</script>
+
+
+@*<div class="container-fluid navbar navbar-default navbar-fixed-top">
+    <div class="navbar-primary navbar-fixed-top" style="background-color:#3E3D3F; height:23px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p style="color:white;"><span class="fa fa-phone fa fw"></span> Contact number: #0999999999</p>
+                </div>
+                <div class="col-md-4" id="font-span">
+                    <a href="#"><span class="fa fa-facebook fa fw"></span></a>
+                    <a href="#"><span class="fa fa-twitter fa fw"></span></a>
+                    <a href="#"><span class="fa fa-instagram fa fw"></span></a>
+                </div>
+                <div class="col-md-4">
+                    
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+  
+</div>
+<script type="text/javascript">
+
+</script>*@
 

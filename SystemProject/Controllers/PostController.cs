@@ -10,6 +10,9 @@ namespace SystemProject.Controllers
 {
     public class PostController : ApiController
     {
+
+
+
         private Data.smartshopdbDataContext db = new Data.smartshopdbDataContext();
 
         [Route("api/post/add")]
@@ -49,5 +52,6 @@ namespace SystemProject.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
+      
     }
 }

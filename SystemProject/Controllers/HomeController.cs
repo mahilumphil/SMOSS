@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using SystemProject.Models;
 
 namespace SystemProject.Controllers
 {
@@ -29,7 +30,18 @@ namespace SystemProject.Controllers
         [Authorize]
         public ActionResult Main()
         {
+
+            ViewBag.Categories = GetCategoriesSelectList();
             return View();
+           
         }
+
+
+        private SelectList GetCategoriesSelectList()
+        {
+             return new SelectList(Post.getCategories(), "category_ID" , "category_name" , "category" , 1 );
+        }
+
+     
     }
 }

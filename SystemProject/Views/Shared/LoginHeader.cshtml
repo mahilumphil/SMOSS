@@ -1,7 +1,7 @@
 ﻿@Styles.Render("~/Content/css")
 @Styles.Render("~/font-awesome/css")
-<div class="navbar-primary navbar-fixed-top">
-    <div class="navbar-primary navbar-fixed-top" style="background-color:#3E3D3F; height:23px;">
+<div class="navbar-default navbar-fixed-top" id="login-header">
+    <div class="navbar-primary navbar-fixed-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -19,16 +19,16 @@
         </div>
     </div>
 
-        <div class="row">
-            <div class="col-md-6 col-md-offset-2">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="../Home/Index"><img src="~/img/logo.png" id="img" /></a>
-                </div>
-            </div>
-            <div class="col-md-4">
-
+    <div class="row" id="login-header">
+        <div class="col-md-6 col-md-offset-2">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../Home/Index"><img src="~/img/logo.png" id="img" /></a>
             </div>
         </div>
+        <div class="col-md-4">
+
+        </div>
     </div>
+</div>
 @Scripts.Render("~/bundles/bootstrap")
 

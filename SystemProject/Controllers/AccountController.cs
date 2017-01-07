@@ -142,7 +142,8 @@ namespace SystemProject.Controllers
             return View();
         }
 
-        //
+    
+      
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
@@ -151,13 +152,16 @@ namespace SystemProject.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var user = new ApplicationUser 
                 { 
                     UserName = model.Email,
                     Email = model.Email,
                     FullName = model.FullName,
                     Address = model.Address,
-                    ContactNumber = model.ContactNumber
+                    ContactNumber = model.ContactNumber,
+                    website = model.Websites
+
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -172,7 +176,7 @@ namespace SystemProject.Controllers
 
 
 
-                    return RedirectToAction("Main", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }

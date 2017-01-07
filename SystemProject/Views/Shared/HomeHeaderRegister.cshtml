@@ -1,9 +1,26 @@
 ﻿@Styles.Render("~/Content/css")
 @Styles.Render("~/font-awesome/css")
+<div class="navbar-default navbar-fixed-top" id="login-header">
+    <div class="navbar-primary navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p style="color:white;"><span class="fa fa-phone fa fw"></span> Contact number: #0999999999</p>
+                </div>
+                <div class="col-md-4" id="font-span">
+                    <a href="#"><span class="fa fa-facebook fa fw"></span></a>
+                    <a href="#"><span class="fa fa-twitter fa fw"></span></a>
+                    <a href="#"><span class="fa fa-instagram fa fw"></span></a>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
 
-<div class="container-fluid navbar navbar-default navbar-fixed-top">
-    <div class="row">
-        <div class="col-md-4">
+        </div>
+    </div>
+
+    <div class="row" id="login-header">
+        <div class="col-md-6 col-md-offset-2">
             <div class="navbar-header">
                 <a class="navbar-brand" href="../Home/Index"><img src="~/img/logo.png" id="img" /></a>
             </div>
@@ -11,10 +28,7 @@
         <div class="col-md-4">
 
         </div>
-        <div class="col-md-4">
-            @Scripts.Render("~/bundles/bootstrap")
-        </div>
     </div>
 </div>
-
+@Scripts.Render("~/bundles/bootstrap")
 

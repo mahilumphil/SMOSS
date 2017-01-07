@@ -21,7 +21,7 @@ namespace SystemProject.Models
         public String FullName { get; set; }
         public String Address { get; set; }
         public String ContactNumber { get; set; }
-
+        public String website { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace SystemProject.Models
 {
@@ -61,10 +62,13 @@ namespace SystemProject.Models
         public bool RememberMe { get; set; }
     }
 
+
+
     public class RegisterViewModel
     {
         [Required]
         [EmailAddress]
+        [SystemProject.Models.PlaceholderAttribute.PlaceHolder("Email Address")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -79,6 +83,11 @@ namespace SystemProject.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        //[Required]
+        //[Display(Name = "Username")]
+        //public string UserName { get; set; }
+
+
         [Required]
         [Display(Name = "FullName")]
         public string FullName { get; set; }
@@ -91,7 +100,11 @@ namespace SystemProject.Models
         [Display(Name = "ContactNumber")]
         public string ContactNumber { get; set; }
 
+        [Required]
+        [Display(Name = "Website")]
+        public string Websites { get; set; }
 
+     
     }
 
     public class ResetPasswordViewModel

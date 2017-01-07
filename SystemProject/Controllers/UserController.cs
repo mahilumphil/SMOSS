@@ -15,6 +15,8 @@ namespace SystemProject.Controllers
             if (User != null)
             {
                 var context = new ApplicationDbContext();
+                //var username = User.Identity.Name;
+
                 var username = User.Identity.Name;
 
                 if (!string.IsNullOrEmpty(username))
@@ -22,7 +24,7 @@ namespace SystemProject.Controllers
                     var user = context.Users.SingleOrDefault(u => u.UserName == username);
                     string fullName = string.Concat(new string[] { user.FullName });
 
-                    ViewData.Add("UserName", User.Identity.Name);
+                    ViewData.Add("FullName", User.Identity.Name);
                 }
             }
             base.OnActionExecuted(filterContext);

@@ -81,7 +81,13 @@
         <div class="text-vertical-center" align="center">
             <h1>Smart Shop</h1>
             <br>
-            <a href="~/Account/Register" class="btn btn-success btn-lg">Join Now</a>
+            @if (Request.IsAuthenticated)
+            {
+            }
+            else
+            {
+                <a href="~/Account/Register" class="btn btn-success btn-lg">Join Now</a>
+            }
         </div>
     </header>
     <!-- About -->
