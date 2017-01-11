@@ -201,16 +201,16 @@ html, body {
 */
 
 #login-form {
-    border-radius:5px;
-    border:1px solid darkgray;
-    margin-top:300px;
-    padding:50px;
+    border-radius: 5px;
+    border: 1px solid darkgray;
+    margin-top: 300px;
+    padding: 50px;
 }
 
-#login-header{
-    background-color:#3E3D3F; 
-    height:23px; 
-    box-shadow:5px,5px,5px,black;
+#login-header {
+    background-color: #3E3D3F;
+    height: 23px;
+    box-shadow: 5px,5px,5px,black;
 }
 
 #User {
@@ -238,40 +238,149 @@ html, body {
     height: 100%;
 }
 
-#main-container {
-    height:100%;
-    margin-top:150px;
+.main-container {
+    height: 100%;
+    margin-top: 200px;
 }
 
-table {
-    width:100%;
-    margin-top:20px;
+/*
+
+    Page Containers
+
+*/
+
+
+
+.page-container {
+    height: 100%;
+    margin-top: 200px;
+    
 }
-    table,thead{
-        border-collapse:initial;
+
+#inner-page-container {
+    margin-left: 200px;
+}
+
+.panel-body {
+    height: 90px;
+    width: 110px;
+    margin-left: 20%;
+}
+
+.panel-footer {
+    height: 100px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+    .panel-footer:hover {
+        border-bottom: 8px solid darkblue;
     }
-        table > thead > tr {
-            
-        }
-table>thead>tr>td {
-    font-size:medium;
-    text-align:center;
-    border:1px solid black;
-    width:25%;
-    padding:5px;
+
+h4 {
+    margin-top: 20px;
+    color: darkgray;
 }
-            table > thead > tr > .hot:hover {
-                background-color:red;
-                color:darkgray;
-            }
-            table > thead > tr > .sales:hover {
-                background-color:blue;
-                color:darkgray;
-            }
-            table > thead > tr > .most:hover {
-                background-color:green;
-                color:darkgray;
-            }
+
+#first {
+    margin-top: 70px;
+    margin-left: 190px;
+}
+
+#inner-first {
+    width: 100%;
+    color: black;
+    border: 1px solid darkgray;
+    height: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.1);
+    border: 1px solid darkgray;
+}
+
+
+    #inner-first:hover {
+        background-color: transparent;
+        border: none;
+    }
+
+#second {
+    margin-top: 70px;
+    margin-left: 190px;
+}
+
+#inner-second {
+    width: 100%;
+    color: black;
+    border: 1px solid darkgray;
+    height: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.1);
+    border: 1px solid darkgray;
+}
+
+    #inner-second:hover {
+        background-color: transparent;
+        border: none;
+    }
+
+#third {
+    margin-top: 70px;
+    margin-left: 190px;
+}
+
+#inner-third {
+    width: 100%;
+    color: black;
+    border: 1px solid darkgray;
+    height: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.1);
+    border: 1px solid darkgray;
+}
+
+    #inner-third:hover {
+        background-color: transparent;
+        border: none;
+    }
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 5px 5px 5px darkgray;
+}
+
+table, thead {
+    border-collapse: initial;
+}
+
+    table > thead > tr {
+    }
+
+        table > thead > tr > td {
+            font-size: medium;
+            text-align: center;
+            border: 1px solid black;
+            width: 25%;
+            padding: 5px;
+        }
+
+        table > thead > tr > .hot:hover {
+            background-color: red;
+            color: darkgray;
+        }
+
+        table > thead > tr > .sales:hover {
+            background-color: blue;
+            color: darkgray;
+        }
+
+        table > thead > tr > .most:hover {
+            background-color: green;
+            color: darkgray;
+        }
 
 /*
 
@@ -280,11 +389,29 @@ table>thead>tr>td {
 */
 
 #homefooter {
-    position:absolute;
-    margin-top:200px;
-    width:100%;
+    margin:0;
+    position: relative;
+    margin-top: 200px;
+    width: 100%;
+    text-align: center;
 }
 
+/*
+
+    Visitor Content
+
+*/
+.visitor-container {
+    height: auto;
+    padding: 10px;
+}
+
+.visitor {
+    margin-top: 200px;
+    padding: 10px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+}
 
 
 /* Header */
@@ -365,9 +492,9 @@ table>thead>tr>td {
 }
 
 
-.map iframe {
-    pointer-events: none;
-}
+    .map iframe {
+        pointer-events: none;
+    }
 
 /* Footer */
 
@@ -391,11 +518,12 @@ a #img {
     margin-top: -11px;
     height: 110px;
     width: 300px;
-    padding:5px;
+    padding: 5px;
 }
 
 .registration-form {
     padding: 10px;
+    width:100%;
 }
 
 .login {
@@ -513,7 +641,7 @@ a #img {
         margin-top: -10px;
     }
 
-    .footer-contact {
+    #footer-contact {
         background-color: white;
     }
     /*
@@ -553,5 +681,130 @@ a #img {
     */
     .map {
         height: 75%;
+    }
+
+    .page-container {
+        margin-top: 100px;
+    }
+
+    #first {
+        margin-top: 20px;
+        margin-left: auto;
+    }
+
+    #inner-first {
+        margin-top: 10px;
+        width: auto;
+        color: black;
+        height: auto;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: skyblue;
+        border: none;
+    }
+
+
+        #inner-first:hover {
+            background-color: transparent;
+            border: none;
+        }
+
+    #second {
+        margin-top: 20px;
+        margin-left: auto;
+    }
+
+    #inner-second {
+        margin-top: 10px;
+        width: auto;
+        color: black;
+        height: auto;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: green;
+        border: none;
+    }
+
+        #inner-second:hover {
+            background-color: transparent;
+            border: none;
+        }
+
+    #third {
+        margin-top: 20px;
+        margin-left: auto;
+    }
+
+    #inner-third {
+        width: auto;
+        color: black;
+        height: auto;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: darkblue;
+        border: none;
+    }
+
+        #inner-third:hover {
+            background-color: transparent;
+            border: none;
+        }
+
+
+    .panel-footer {
+        width: auto;
+        height: auto;
+        margin-top: auto;
+    }
+
+    #h4local {
+        font-size: small;
+        color: #7B2020;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #h4company {
+        font-size: small;
+        color: #7B2020;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #h4brand {
+        font-size: small;
+        color: #7B2020;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #h4artist {
+        font-size: small;
+        color: #7B2020;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #h4entertainment {
+        font-size: small;
+        color: #7B2020;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #h4community {
+        font-size: small;
+        color: #7B2020;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #h4other {
+        font-size: small;
+        color: #7B2020;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    #homefooter {
+        margin-top:550px;
+        width: 100%;
+        text-align: center;
+    }
+    #footer-contact {
+        background-color:rgba(0,0,0,0.1);
     }
 }

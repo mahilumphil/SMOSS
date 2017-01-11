@@ -27,20 +27,17 @@ namespace SystemProject.Controllers
 
             return View();
         }
+
         [Authorize]
         public ActionResult Main()
         {
 
-            ViewBag.Categories = GetCategoriesSelectList();
             return View();
            
         }
 
 
-        private SelectList GetCategoriesSelectList()
-        {
-             return new SelectList(Post.getCategories(), "category_ID" , "category_name" , "category" , 1 );
-        }
+     
 
      
     }

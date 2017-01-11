@@ -83,6 +83,7 @@
             <br>
             @if (Request.IsAuthenticated)
             {
+                <a href="~/Pages/Pages" class="btn btn-primary btn-lg">Create a Page</a>
             }
             else
             {
@@ -302,10 +303,10 @@
             var d = new Date();
             var gh = d.getUTCHours();
             var h = new Date();
-            var sh = h.setUTCHours(18, 00, 00, 00);
+            var sh = h.setUTCHours(6);
 
 
-            if (gh <= sh || gh >= sh) {
+            if (gh > sh) {
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
                         center: {

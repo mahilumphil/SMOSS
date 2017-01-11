@@ -1,242 +1,159 @@
-﻿@{
-    var placeholder = string.Empty;
-    if (ViewData.ModelMetadata.AdditionalValues.ContainsKey("placeholder"))
-    {
-        placeholder = ViewData.ModelMetadata.AdditionalValues["placeholder"] as string;
-    }
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Post - Details</title>
 
-
-}
-
-
+</head>
 @Styles.Render("~/Content/css")
 @Styles.Render("~/font-awesome/css")
 @Html.Partial("MainHeader")
-
-    @*<br /><br /><br /><br />
-        <div class="container">
-            <div class="panel-body">
+<body>
+    <div class="row main-container">
+        <div class="col-md-3">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
-                        <form>
-                            <h3>Add Post Here</h3>
-                            <div class="form-group">
-                                <input type="text" name="posttitle" value=" " class="form-control required" placeholder="asdasd" />
-                            </div>
-                            <div class="form-group" id="category">
-                                <select class="form-control">
-                                    <optgroup label="T-shirt">
-                                        <option label="">Category</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" rows="15" cols="20" placeholder="Item Details"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="contactper" value=" " class="form-control required" placeholder="Contact Person" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="contactnos" value=" " class="form-control required" placeholder="Contact Number" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="website" value=" " class="form-control required" placeholder="Website or Facebook Pages" />
-                            </div>
-                            <div class="form-group">
-                                <input type="date" name="contactnos" value=" " class="form-control required" placeholder="Date Created" />
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-defalt text-center " name="img" id="img">Images</button>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block" name="addpost">Add Post</button>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-danger btn-block" name="addpost" onclick="addPost()">Reset</button>
-                            </div>
-                        </form>
+                    <div class="col-md-4">
+                        <label for="category">Category</label>
+                        <br />
+                        <input type="text" name="category" id="categoryname" class="form-control" />
+                        <br />
+                        <label for="categorydesc">Category Description</label>
+                        <br />
+                        <input type="text" name="categorydesc" id="categorydesc" class="form-control" />
+                        <br />
+                        <label for="title">Title</label>
+                        <br />
+                        <input type="text" name="title" id="title" class="form-control" />
+                        <br />
+                        <label for="details">Details</label>
+                        <br />
+                        <textarea type="text" name="details" id="details" class="form-control" rows="15" cols="15"></textarea>
+                        <br />
+                        <label for="contactperson">Contact Person</label>
+                        <br />
+                        <input type="text" name="contactperson" id="contactperson" class="form-control" />
+                        <br />
+                        <label for="contactnumber">Contact Number</label>
+                        <br />
+                        <input type="text" name="contactnumber" id="contactnumber" class="form-control" />
+                        <br />
+                        <label for="website">Website</label>
+                        <br />
+                        <input type="text" name="website" id="website" class="form-control" />
+                        <br />
+                        <label for="date">Date Post</label>
+                        <br />
+                        <input type="date" name="date" id="date" class="form-control" />
+                        <br />
+                        @*<label for="photo">Images</label>
+                        <br />
+                        <input type="file" name="photo" id="photo" class="form-control" />
+                        <br />*@
+                        <label for="active">Active</label>
+                        <br />
+                        <input type="checkbox" name="active" id="active" class="" />
+                        <br /><br />
+                        <button type="submit" class="btn btn-info btn-block" onclick="addPostItem()">Post</button>
                     </div>
-                    <br /><br /><br />
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-2">
-                            </div>
-                            <div class="col-md-8" style="height:200px; border:1px solid black;" id="postdiv">
-                                <h1>Post here..</h1>
-                                <hr />
-                                <div class="row">
-                                    <div class="col-md-12">
+                    <div class="col-md-8">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
 
+                    </div>
+                    <div class="col-md-7" >
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td class="hot">Hot Sales</td>
+                                    <td class="sales">Item Sales</td>
+                                    <td class="most">Most Viewed Items</td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <br /><br /><br />
+                        <div class="row" style="border:1px solid black; ">
+                            <div class="col-md-12">
+                                <h5>Category</h5>
+                                <hr />
+                                <h5>Category Description</h5>
+                                <hr />
+                                <h5>Title</h5>
+                                <hr />
+                                <h5>Details</h5>
+                                <hr />
+                                <h5>Category</h5>
+                                <hr />
+                                <h5>Contact Person</h5>
+                                <hr />
+                                <h5>Contact Number</h5>
+                                <hr />
+                                <div class="row" style="border:1px solid black; height:100px;">
+                                    <div class="col-md-12">
+                                        Comment Here
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-6" style="height:200px; border:1px solid black;" id="postdiv">
-                                <p>ads</p>
-                            </div>
-                            <div class="col-md-3">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>*@
-    <div class="container" id="main-container">
-        <div class="row">
-@if (Request.IsAuthenticated)
-{
-            <div class="col-md-3">
-                <div class="form-group form-horizontal">
-                    @model SystemProject.Models.Post
-                    @using (Html.BeginForm("Main", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <h3>Post Here</h3>
-                        @Html.ValidationSummary(" ", new { @class = "text-danger " })
-                        <div class="form-group">
-                            <div class="row">
-                                @Html.LabelFor(m => m.title, new { @class = "col-md-1 control-label" })
-                                <div class="col-md-12">
-                                    @Html.TextBoxFor(m => m.title, new { @class = "form-control", placeholder = "Title" })
-                                    @Html.ValidationMessage("Required")
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                @Html.LabelFor(m => m.category, new { @class = "col-md-1 control-label" })
-                                <div class="col-md-12">
-                                    @Html.DropDownList("Categories")
-                                    @Html.ValidationMessage("Required")
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="15" cols="20" placeholder="Item Details"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                @Html.LabelFor(m => m.details, new { @class = "col-md-1 control-label" })
-                                <div class="col-md-12">
-                                    @Html.TextBoxFor(m => m.details, new { @class = "form-control", placeholder = "Details" })
-                                    @Html.ValidationMessage("Required")
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                @Html.LabelFor(m => m.contact_person, new { @class = "col-md-1 control-label" })
-                                <div class="col-md-12">
-                                    @Html.TextBoxFor(m => m.contact_person, new { @class = "form-control", placeholder = "Contact Person" })
-                                    @Html.ValidationMessage("Required")
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                @Html.LabelFor(m => m.contact_number, new { @class = "col-md-1 control-label" })
-                                <div class="col-md-12">
-                                    @Html.TextBoxFor(m => m.contact_number, new { @class = "form-control", placeholder = "Contact Number " })
-                                    @Html.ValidationMessage("Required")
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                @Html.LabelFor(m => m.website, new { @class = "col-md-1 control-label" })
-                                <div class="col-md-12">
-                                    @Html.TextBoxFor(m => m.website, new { @class = "form-control", placeholder = "Website or Others" })
-                                    @Html.ValidationMessage("Required")
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                @Html.LabelFor(m => m.photo, new { @class = "col-md-1 control-label" })
-                                <div class="col-md-12">
-                                    @Html.TextBoxFor(m => m.photo, new { @class = "form-control", placeholder = "Images", type = "file" })
-                                    @Html.ValidationMessage("Required")
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                @Html.LabelFor(m => m.date_created, new { @class = "col-md-1 control-label" })
-                                <div class="col-md-12">
-                                    @Html.TextBoxFor(m => m.date_created, new { @class = "form-control ", placeholder = "Date Created", type = "Date" })
-                                    @Html.ValidationMessage("Required")
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12" style="background-color:rgba(0,0,0,0.1);height:100px; border-radius;">
-                                <input type="submit" class="btn btn-success" value="Post" style="margin-left:25%; margin-top:9%; width:50%;" />
-                            </div>
+        </div>
+        <div class="col-md-3">
 
-                        </div>
-                    }
-                </div>
-            </div>
-            }
-            <div class="col-md-6">
-                <table>
-                    <thead>
-                        <tr>
-                            <td class="hot">
-                                Hot Deals
-                            </td>
-                            <td class="sales">
-                                Sales
-                            </td>
-                            <td class="most">
-                                Most Viewed Items
-                            </td>
-                        </tr>
-                    </thead>
-                    <tr></tr>
-                </table>
-            </div>
-            <div class="col-md-3">
-
-            </div>
         </div>
     </div>
-    <script type="text/javascript">
+</body>
+@Html.Partial("HomeFooter")
+</html>
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    console.log(getPostData());
 
-    </script>
-    @Html.Partial("HomeFooter")
-    @Scripts.Render("~/bundles/bootstrap")
-    <script type="text/javascript">
+    function getPostData() {
+        var postObject = new Object();
+        postObject.categoryname = document.getElementById("categoryname").value;
+        postObject.categorydescription = document.getElementById("categorydesc").value;
+        postObject.title = document.getElementById("title").value;
+        postObject.details = document.getElementById("details").value;
+        postObject.contact_person = document.getElementById("contactperson").value;
+        postObject.contact_number = document.getElementById("contactnumber").value;
+        postObject.website = document.getElementById("website").value;
+        postObject.date_created = new Date(document.getElementById("date").value);
+        //postObject.photo = document.getElementById("photo").value;
+        postObject.is_active = document.getElementById("active").checked;
+        return JSON.stringify(postObject)
+    }
 
-        function addPost() {
-
-
-
-            function requiredField() {
-                var isValid = true;
-                $('.requiredField').each(function () {
-                    if ($.trim($(this).val()) == '') {
-                        isValid = false;
-                        $(this).css({
-                            "border": "1px solid red"
-                        });
-                    } else {
-                        $(this).css({
-                            "border": "",
-                        });
-                    }
-                });
-
-                return isValid;
+    function addPostItem() {
+        $.ajax({
+            type: "POST",
+            url: '/api/post/add',
+            data: getPostData(),
+            contentType: "application/json;charset=utf-8",
+            statusCode: {
+                200: function () {
+                    toastr.success("Post Success");
+                },
+                400: function (message) {
+                    toastr.error(message.responseText.replace(/"/g, ""), "Bad Request");
+                }
             }
-        }
+        });
+    }
 
-    </script>
-
+    
+</script>

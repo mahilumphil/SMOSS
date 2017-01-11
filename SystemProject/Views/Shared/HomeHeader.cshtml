@@ -35,10 +35,13 @@
                     {
                         <div class="row">
                             <div class="col-md-6">
-                                <p class="btn-success text-center visitor-btn" style="width:100%; border-radius:2px; border:1px solid grey; ">@Html.ActionLink("Continue as Visitor", "VisitorDetails", "Account")</p>
+                                @if (!Request.IsAuthenticated)
+                                {
+                                    <p class="btn-success text-center visitor-btn" style="width:100%; border-radius:2px; border:1px solid grey; ">@Html.ActionLink("Continue as Visitor", "VisitorView", "Pages")</p>
+                                }
                             </div>
                             <div class="col-md-6">
-                                <p class="btn-default text-center login-btn" style="width:100%; border-radius:2px; border:1px solid grey; ">@Html.ActionLink("Login", "Login", "Account")</p>
+                                    <p class="btn-default text-center login-btn" style="width:100%; border-radius:2px; border:1px solid grey; ">@Html.ActionLink("Login", "Login", "Account")</p>
                             </div>
                         </div>
                     }
