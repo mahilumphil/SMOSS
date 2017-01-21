@@ -44,11 +44,11 @@ namespace SystemProject.Api
             }
             catch(Exception e)
             {
+                Debug.WriteLine(e);
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Bad Request!");
             }
         
         }
         
-
     }
 }

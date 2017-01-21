@@ -202,8 +202,7 @@ html, body {
 
 #login-form {
     border-radius: 5px;
-    border: 1px solid darkgray;
-    margin-top: 300px;
+    margin-top: 200px;
     padding: 50px;
 }
 
@@ -250,10 +249,10 @@ html, body {
 */
 
 
-
 .page-container {
     height: 100%;
-    margin-top: 200px;
+    margin:5% 15% 15% 15%;
+    
     
 }
 
@@ -262,12 +261,12 @@ html, body {
 }
 
 .panel-body {
-    height: 90px;
-    width: 110px;
-    margin-left: 20%;
+    /*height: 90px;*/
+    /*width: 110px;*/
+    /*margin-left: 20%;*/
 }
 
-.panel-footer {
+/*.panel-footer {
     height: 100px;
     margin-top: 40px;
     text-align: center;
@@ -275,11 +274,14 @@ html, body {
 
     .panel-footer:hover {
         border-bottom: 8px solid darkblue;
-    }
+    }*/
 
 h4 {
-    margin-top: 20px;
-    color: darkgray;
+    border-top:2px solid black;
+    margin:0px 0px 0px 0px;
+    color: black;
+    padding:5px;
+
 }
 
 #first {
@@ -291,11 +293,10 @@ h4 {
     width: 100%;
     color: black;
     border: 1px solid darkgray;
-    height: 250px;
+    height: auto;
     padding: 10px;
     border-radius: 10px;
     background-color: rgba(0,0,0,0.1);
-    border: 1px solid darkgray;
 }
 
 
@@ -313,11 +314,10 @@ h4 {
     width: 100%;
     color: black;
     border: 1px solid darkgray;
-    height: 250px;
+    height: auto;
     padding: 10px;
     border-radius: 10px;
     background-color: rgba(0,0,0,0.1);
-    border: 1px solid darkgray;
 }
 
     #inner-second:hover {
@@ -334,11 +334,10 @@ h4 {
     width: 100%;
     color: black;
     border: 1px solid darkgray;
-    height: 250px;
+    height: auto;
     padding: 10px;
     border-radius: 10px;
     background-color: rgba(0,0,0,0.1);
-    border: 1px solid darkgray;
 }
 
     #inner-third:hover {
@@ -391,7 +390,7 @@ table, thead {
 #homefooter {
     margin:0;
     position: relative;
-    margin-top: 200px;
+    margin-top: 400px;
     width: 100%;
     text-align: center;
 }
@@ -399,7 +398,7 @@ table, thead {
 /*
 
     Visitor Content
-
+    
 */
 .visitor-container {
     height: auto;
@@ -409,7 +408,6 @@ table, thead {
 .visitor {
     margin-top: 200px;
     padding: 10px;
-    border: 1px solid darkgray;
     border-radius: 5px;
 }
 
@@ -509,10 +507,10 @@ footer {
     right: 5px;
 }
 
-.panel-heading {
+/*.panel-heading {
     height: 100px;
     width: 100%;
-}
+}*/
 
 a #img {
     margin-top: -11px;
@@ -751,11 +749,11 @@ a #img {
         }
 
 
-    .panel-footer {
+    /*.panel-footer {
         width: auto;
         height: auto;
         margin-top: auto;
-    }
+    }*/
 
     #h4local {
         font-size: small;
@@ -800,7 +798,7 @@ a #img {
     }
 
     #homefooter {
-        margin-top:550px;
+        margin-top:600px;
         width: 100%;
         text-align: center;
     }

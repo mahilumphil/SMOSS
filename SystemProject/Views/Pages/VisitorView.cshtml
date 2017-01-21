@@ -11,66 +11,79 @@
     @Styles.Render("~/font-awesome/css")
 </head>
 <body>
-    @Html.Partial("HomeHeaderRegister")
-    <div class="container visitor-container">
-        <div class="row">
-            <div class="col-md-4">
+   @if (Request.IsAuthenticated)
+   {
+       Response.Redirect("~/Home/Main");
+   }
+   else
+   { 
+        @Html.Partial("HomeHeaderRegister")
+        <div class="container visitor-container">
+            <div class="row">
+                <div class="col-md-3">
 
-            </div>
-            <div class="col-md-4 visitor">
-                <h3>Good day, Visitors</h3>
-                <hr />
-                <label for="name">Name</label>
-                <br />
-                <input type="text" name="name" class="form-control" id="name" />
-                <br />
-                <label for="email">Email</label>
-                <br />
-                <input type="text" name="email" class="form-control" id="email" />
-                <br />
-                <label for="date">Date</label>
-                <br />
-                <input type="date" name="date" class="form-control" id="date" />
-                <br />
-                <label for="active">Is_Active</label>
-                <br />
-                <input type="checkbox" name="active" class="" id="active" />
-                <br />
-                <button type="button" name="submit" value="Proceed" id="btnAdd" onclick="addVisitorOnclick()" class="btn btn-success btn-block">Proceed</button>
-            </div>
-            <div class="col-md-4">
+                </div>
+                <div class="col-md-6 visitor">
+                    <div class="panel panel-default">
+                        <div class="panel panel-heading">
+                            <h3>Good day, Visitors</h3>
+                        </div>
+                        <div class="panel panel-body">
+                            <label for="name">Name</label>
+                            <br />
+                            <input type="text" name="name" class="form-control" id="name" />
+                            <br />
+                            <label for="email">Email</label>
+                            <br />
+                            <input type="text" name="email" class="form-control" id="email" />
+                            <br />
+                            <label for="date">Date</label>
+                            <br />
+                            <input type="date" name="date" class="form-control" id="date" />
+                            <br />
+                            <label for="active">Is_Active</label>
+                            <br />
+                            <input type="checkbox" name="active" class="" id="active" />
+                        </div>
+                        <button type="button" name="submit" value="Proceed" id="btnAdd" onclick="addVisitorOnclick()" class="btn btn-success btn-block">Proceed</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
 
+                </div>
             </div>
         </div>
-    </div>
-@Scripts.Render("~/bundles/bootstrap")    
-<script type="text/javascript">
-    function getVisitorDate() {
-        var visitorObject = new Object();
-        visitorObject.name = document.getElementById("name").value;
-        visitorObject.email = document.getElementById("email").value;
-        visitorObject.date_visited = document.getElementById("date").value;
-        visitorObject.is_active = document.getElementById("active").checked;
-        return JSON.stringify(visitorObject)
-    }
+   }
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript">
+        function getVisitorDate() {
+            var visitorObject = new Object();
+            visitorObject.name = document.getElementById("name").value;
+            visitorObject.email = document.getElementById("email").value;
+            visitorObject.date_visited = document.getElementById("date").value;
+            visitorObject.is_active = document.getElementById("active").checked;
+            return JSON.stringify(visitorObject)
+        }
 
-    function addVisitorOnclick() {
+        function addVisitorOnclick() {
 
-        $.ajax({
-            type: "POST",
-            url: '/api/visitor/add',
-            data: getVisitorDate(),
-            contentType: "application/json;charset=utf-8",
-            statusCode: {
-                200: function () {
+            $.ajax({
+                type: "POST",
+                url: '/api/visitor/add',
+                data: getVisitorDate(),
+                contentType: "application/json;charset=utf-8",
+                statusCode: {
+                    200: function () {
+                        NProgress.start();
                         toastr.success("Success");
-                },
-                400: function (message) {
-                    toastr.error(message.responseText.replace(/"/g, ""), "Bad Request");
+                        window.location.assign("../Home/Main");
+                    },
+                    400: function (message) {
+                        toastr.error(message.responseText.replace(/"/g, ""), "The Email You Entered");
+                    }
                 }
-            }
-        });
-    }
-</script>
+            });
+        }
+    </script>
 </body>
 </html>

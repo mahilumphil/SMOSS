@@ -22,12 +22,17 @@ namespace SystemProject
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/jquery.js",
+                      "~/Scripts/jquery-1.10.2.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap.min.js",
-                      "~/Scripts/jquery.js",
                       "~/Scripts/menu.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/toastr.min.js"
+                      "~/Scripts/toastr.min.js",
+                      "~/wijmo/controls/wijmo.min.js",
+                      "~/wijmo/controls/wijmo.grid.min.js",
+                      "~/wijmo/controls/wijmo.input.min.js",
+                      "~/Scripts/nprogress.js"
                         ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -36,13 +41,15 @@ namespace SystemProject
                       "~/Content/bootstrap-theme.css",
                       "~/Content/bootstrap-theme.min.css",
                       "~/Content/stylish-portfolio.css",
-                      "~/Content/toastr.min.css"
+                      "~/Content/toastr.min.css",
+                      "~/wijmo/styles/wijmo.min.css",
+                      "~/Content/nprogress.css"
                       ));
 
 
             bundles.Add(new StyleBundle("~/font-awesome/css").Include(
                      "~/font-awesome/css/font-awesome.css",
-                     "~/font-awesome/css/font-awesome.min.css"
+                     "~/font-awesome/css/font-awesome.min.css"  
                     ));
         }
     }

@@ -23,13 +23,11 @@ namespace SystemProject.Api
             try
             {
                 Data.post newPost = new Data.post();
-
                 //string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Images\applicantPhotoPlaceHolder.png");
 
                 //Byte[] bytes = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Images/applicantPhotoPlaceHolder.png"));
                 //String file = Convert.ToBase64String(bytes);
                 //byte[] imgarr = Convert.FromBase64String(file);
-
 
                 newPost.categoryname = add.categoryname;
                 newPost.categorydescription = add.categorydescription;
@@ -46,15 +44,40 @@ namespace SystemProject.Api
                 db.posts.InsertOnSubmit(newPost);
                 db.SubmitChanges();
 
+
                 return Request.CreateResponse(HttpStatusCode.OK, " ");
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Bad Request");
-                
+
             }
         }
+
+
+        [HttpGet]
+        [Route("api/post/list")]
+        public List<Models.PostModel> Get()
+        {
+            var getpost = from d in db.posts
+                          select new Models.PostModel
+                              {
+                                  categoryname = d.categoryname,
+                                  categorydescription = d.categorydescription,
+                                  title = d.title,
+                                  details = d.details,
+                                  contact_person = d.contact_person,
+                                  contact_number = d.contact_number,
+                                  website = d.website,
+                                  is_active = d.is_active,
+                                  date_created = d.date_created
+
+                              };
+
+            return getpost.ToList();
+        }
+
 
     }
 }

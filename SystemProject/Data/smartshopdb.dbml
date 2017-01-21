@@ -2,7 +2,7 @@
   <Connection Mode="WebSettings" ConnectionString="Data Source=RND1-PC\SQLEXPRESS;Initial Catalog=smartshop;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ads" Member="ads">
     <Type Name="ad">
-      <Column Name="productID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="productID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="company" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="staff" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="image" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
@@ -13,11 +13,12 @@
   </Table>
   <Table Name="dbo.visitor" Member="visitors">
     <Type Name="visitor">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="date_visited" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="is_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="is_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="visitor_comment" Member="comments" ThisKey="Id" OtherKey="visitor_id" Type="comment" />
     </Type>
   </Table>
   <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
@@ -74,25 +75,26 @@
       <Association Name="AspNetUser_AspNetUserLogin" Member="AspNetUserLogins" ThisKey="Id" OtherKey="UserId" Type="AspNetUserLogin" />
       <Association Name="AspNetUser_AspNetUserRole" Member="AspNetUserRoles" ThisKey="Id" OtherKey="UserId" Type="AspNetUserRole" />
       <Association Name="AspNetUser_AspNetUser" Member="AspNetUser2" ThisKey="Id" OtherKey="Id" Type="AspNetUser" Cardinality="One" />
+      <Association Name="AspNetUser_comment" Member="comments" ThisKey="Id" OtherKey="user_id" Type="comment" />
       <Association Name="AspNetUser_user" Member="users" ThisKey="Id" OtherKey="userID" Type="user" />
       <Association Name="AspNetUser_AspNetUser" Member="AspNetUser1" ThisKey="Id" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.comment" Member="comments">
     <Type Name="comment">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="visitor_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="comment" Member="comment1" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="date_created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="is_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_id" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="AspNetUser_comment" Member="AspNetUser" ThisKey="user_id" OtherKey="Id" Type="AspNetUser" IsForeignKey="true" />
+      <Association Name="visitor_comment" Member="visitor" ThisKey="visitor_id" OtherKey="Id" Type="visitor" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CreatePageArtist" Member="CreatePageArtists">
     <Type Name="CreatePageArtist">
       <Column Name="category" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="details" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="details" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.CreatePageBrandProduct" Member="CreatePageBrandProducts">
@@ -142,16 +144,15 @@
   </Table>
   <Table Name="dbo.[like]" Member="likes">
     <Type Name="like">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="visitor_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="likes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="likes" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="date_created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.post" Member="posts">
     <Type Name="post">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="title" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="details" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="contact_person" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />

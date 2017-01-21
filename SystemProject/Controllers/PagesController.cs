@@ -9,11 +9,13 @@ namespace SystemProject.Controllers
     public class PagesController : Controller
     {
         // GET: Pages
+        [Authorize]
         public ActionResult VisitorView()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult Pages()
         {
             return View();

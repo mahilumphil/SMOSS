@@ -7,8 +7,8 @@ namespace SystemProject.Models
 {
     public class PostModel
     {
-        public Int32 id { get; set; }
-        public Int32 user_id {get ; set;}
+        public String Id { get; set; }
+        public String user_id { get; set; }
         public String title { get; set; }
         public String details { get; set; }
         public String contact_number { get; set; }

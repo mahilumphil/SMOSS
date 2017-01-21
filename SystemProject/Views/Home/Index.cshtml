@@ -119,9 +119,9 @@
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-cloud fa-stack-1x text-primary"></i>
                                 </span>
-                                <h4>
+                                <h5>
                                     <strong>Service Name</strong>
-                                </h4>
+                                </h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                 <a href="#" class="btn btn-light">Learn More</a>
                             </div>
@@ -132,9 +132,9 @@
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-compass fa-stack-1x text-primary"></i>
                                 </span>
-                                <h4>
+                                <h5>
                                     <strong>Service Name</strong>
-                                </h4>
+                                </h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                 <a href="#" class="btn btn-light">Learn More</a>
                             </div>
@@ -145,9 +145,9 @@
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-flask fa-stack-1x text-primary"></i>
                                 </span>
-                                <h4>
+                                <h5>
                                     <strong>Service Name</strong>
-                                </h4>
+                                </h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                 <a href="#" class="btn btn-light">Learn More</a>
                             </div>
@@ -158,9 +158,9 @@
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-shield fa-stack-1x text-primary"></i>
                                 </span>
-                                <h4>
+                                <h5>
                                     <strong>Service Name</strong>
-                                </h4>
+                                </h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                 <a href="#" class="btn btn-light">Learn More</a>
                             </div>
@@ -222,18 +222,18 @@
                     <div class="panel-group" id="accordion">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title">
+                                <h5 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                        <h1 class="text-center">Team</h1>
+                                        Team
                                     </a>
-                                </h4>
+                                </h5>
                             </div>
                             <div id="collapse1" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-4">
-                                            <h4>Project Manager</h4>
+                                            <h5>Project Manager</h5>
                                             <hr />
                                             <p>Janice Lado</p>
                                             <img src="~/img/jan.jpg" class="img-responsive" />
@@ -245,13 +245,13 @@
                                     <div class="row">
 
                                         <div class="col-md-5 col-md-offset-1">
-                                            <h4>UI Designer</h4>
+                                            <h5>UI Designer</h5>
                                             <hr />
                                             <p>Christian Rivera</p>
                                             <img src="~/img/chr.jpg" class="img-responsive" />
                                         </div>
                                         <div class="col-md-5 ">
-                                            <h4>Technical Writer/ QA Tester</h4>
+                                            <h5>Technical Writer/ QA Tester</h5>
                                             <hr />
                                             <p>Anjanette Mercado</p>
                                             <img src="~/img/anj.jpg" class="img-responsive" />
@@ -262,13 +262,13 @@
                                     <div class="row">
 
                                         <div class="col-md-5 col-md-offset-1">
-                                            <h4>Developer</h4>
+                                            <h5>Developer</h5>
                                             <hr />
                                             <p>Christian Rivera</p>
                                             <img src="~/img/phil.jpg" class="img-responsive" />
                                         </div>
                                         <div class="col-md-5 ">
-                                            <h4>Database Designer</h4>
+                                            <h5>Database Designer</h5>
                                             <hr />
                                             <p>Nichole Mabini</p>
                                             <img src="~/img/nich.jpg" class="img-responsive" />
@@ -416,6 +416,11 @@
     <footer>
         @Html.Partial("HomeFooter")
     </footer>
+    <script type="text/javascript">
+        $('.collapse').on('show.bs.collapse', function () {
+            $('#accordion').find('.collapse.in').collapse('hide');
+        });
+    </script>
 </body>
 
 </html>

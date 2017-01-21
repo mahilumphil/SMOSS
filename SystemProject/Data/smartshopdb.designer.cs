@@ -51,6 +51,9 @@ namespace SystemProject.Data
     partial void InsertAspNetUser(AspNetUser instance);
     partial void UpdateAspNetUser(AspNetUser instance);
     partial void DeleteAspNetUser(AspNetUser instance);
+    partial void Insertcomment(comment instance);
+    partial void Updatecomment(comment instance);
+    partial void Deletecomment(comment instance);
     partial void Insertlike(like instance);
     partial void Updatelike(like instance);
     partial void Deletelike(like instance);
@@ -282,7 +285,7 @@ namespace SystemProject.Data
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_productID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_productID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int productID
 		{
 			get
@@ -449,7 +452,7 @@ namespace SystemProject.Data
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _Id;
 		
 		private string _name;
 		
@@ -457,45 +460,48 @@ namespace SystemProject.Data
 		
 		private System.DateTime _date_visited;
 		
-		private System.Nullable<bool> _is_active;
+		private bool _is_active;
+		
+		private EntitySet<comment> _comments;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
     partial void OnemailChanging(string value);
     partial void OnemailChanged();
     partial void Ondate_visitedChanging(System.DateTime value);
     partial void Ondate_visitedChanged();
-    partial void Onis_activeChanging(System.Nullable<bool> value);
+    partial void Onis_activeChanging(bool value);
     partial void Onis_activeChanged();
     #endregion
 		
 		public visitor()
 		{
+			this._comments = new EntitySet<comment>(new Action<comment>(this.attach_comments), new Action<comment>(this.detach_comments));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._id;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._Id != value))
 				{
-					this.OnidChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
@@ -560,8 +566,8 @@ namespace SystemProject.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_active", DbType="Bit")]
-		public System.Nullable<bool> is_active
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_active", DbType="Bit NOT NULL")]
+		public bool is_active
 		{
 			get
 			{
@@ -577,6 +583,19 @@ namespace SystemProject.Data
 					this.SendPropertyChanged("is_active");
 					this.Onis_activeChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="visitor_comment", Storage="_comments", ThisKey="Id", OtherKey="visitor_id")]
+		public EntitySet<comment> comments
+		{
+			get
+			{
+				return this._comments;
+			}
+			set
+			{
+				this._comments.Assign(value);
 			}
 		}
 		
@@ -598,6 +617,18 @@ namespace SystemProject.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.visitor = this;
+		}
+		
+		private void detach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.visitor = null;
 		}
 	}
 	
@@ -1255,6 +1286,8 @@ namespace SystemProject.Data
 		
 		private EntityRef<AspNetUser> _AspNetUser2;
 		
+		private EntitySet<comment> _comments;
+		
 		private EntitySet<user> _users;
 		
 		private EntityRef<AspNetUser> _AspNetUser1;
@@ -1303,6 +1336,7 @@ namespace SystemProject.Data
 			this._AspNetUserLogins = new EntitySet<AspNetUserLogin>(new Action<AspNetUserLogin>(this.attach_AspNetUserLogins), new Action<AspNetUserLogin>(this.detach_AspNetUserLogins));
 			this._AspNetUserRoles = new EntitySet<AspNetUserRole>(new Action<AspNetUserRole>(this.attach_AspNetUserRoles), new Action<AspNetUserRole>(this.detach_AspNetUserRoles));
 			this._AspNetUser2 = default(EntityRef<AspNetUser>);
+			this._comments = new EntitySet<comment>(new Action<comment>(this.attach_comments), new Action<comment>(this.detach_comments));
 			this._users = new EntitySet<user>(new Action<user>(this.attach_users), new Action<user>(this.detach_users));
 			this._AspNetUser1 = default(EntityRef<AspNetUser>);
 			OnCreated();
@@ -1700,6 +1734,19 @@ namespace SystemProject.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUser_comment", Storage="_comments", ThisKey="Id", OtherKey="user_id")]
+		public EntitySet<comment> comments
+		{
+			get
+			{
+				return this._comments;
+			}
+			set
+			{
+				this._comments.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUser_user", Storage="_users", ThisKey="Id", OtherKey="userID")]
 		public EntitySet<user> users
 		{
@@ -1803,6 +1850,18 @@ namespace SystemProject.Data
 			entity.AspNetUser = null;
 		}
 		
+		private void attach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUser = this;
+		}
+		
+		private void detach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUser = null;
+		}
+		
 		private void attach_users(user entity)
 		{
 			this.SendPropertyChanging();
@@ -1817,8 +1876,10 @@ namespace SystemProject.Data
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.comment")]
-	public partial class comment
+	public partial class comment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id;
 		
@@ -1826,17 +1887,34 @@ namespace SystemProject.Data
 		
 		private string _comment1;
 		
-		private System.DateTime _date_created;
+		private string _user_id;
 		
-		private bool _is_active;
+		private EntityRef<AspNetUser> _AspNetUser;
 		
-		private System.Nullable<int> _user_id;
+		private EntityRef<visitor> _visitor;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onvisitor_idChanging(int value);
+    partial void Onvisitor_idChanged();
+    partial void Oncomment1Changing(string value);
+    partial void Oncomment1Changed();
+    partial void Onuser_idChanging(string value);
+    partial void Onuser_idChanged();
+    #endregion
 		
 		public comment()
 		{
+			this._AspNetUser = default(EntityRef<AspNetUser>);
+			this._visitor = default(EntityRef<visitor>);
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -1847,7 +1925,11 @@ namespace SystemProject.Data
 			{
 				if ((this._id != value))
 				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
 					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
@@ -1863,7 +1945,15 @@ namespace SystemProject.Data
 			{
 				if ((this._visitor_id != value))
 				{
+					if (this._visitor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onvisitor_idChanging(value);
+					this.SendPropertyChanging();
 					this._visitor_id = value;
+					this.SendPropertyChanged("visitor_id");
+					this.Onvisitor_idChanged();
 				}
 			}
 		}
@@ -1879,45 +1969,17 @@ namespace SystemProject.Data
 			{
 				if ((this._comment1 != value))
 				{
+					this.Oncomment1Changing(value);
+					this.SendPropertyChanging();
 					this._comment1 = value;
+					this.SendPropertyChanged("comment1");
+					this.Oncomment1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_created", DbType="DateTime NOT NULL")]
-		public System.DateTime date_created
-		{
-			get
-			{
-				return this._date_created;
-			}
-			set
-			{
-				if ((this._date_created != value))
-				{
-					this._date_created = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_active", DbType="Bit NOT NULL")]
-		public bool is_active
-		{
-			get
-			{
-				return this._is_active;
-			}
-			set
-			{
-				if ((this._is_active != value))
-				{
-					this._is_active = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int")]
-		public System.Nullable<int> user_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
+		public string user_id
 		{
 			get
 			{
@@ -1927,8 +1989,104 @@ namespace SystemProject.Data
 			{
 				if ((this._user_id != value))
 				{
+					if (this._AspNetUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
 					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUser_comment", Storage="_AspNetUser", ThisKey="user_id", OtherKey="Id", IsForeignKey=true)]
+		public AspNetUser AspNetUser
+		{
+			get
+			{
+				return this._AspNetUser.Entity;
+			}
+			set
+			{
+				AspNetUser previousValue = this._AspNetUser.Entity;
+				if (((previousValue != value) 
+							|| (this._AspNetUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AspNetUser.Entity = null;
+						previousValue.comments.Remove(this);
+					}
+					this._AspNetUser.Entity = value;
+					if ((value != null))
+					{
+						value.comments.Add(this);
+						this._user_id = value.Id;
+					}
+					else
+					{
+						this._user_id = default(string);
+					}
+					this.SendPropertyChanged("AspNetUser");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="visitor_comment", Storage="_visitor", ThisKey="visitor_id", OtherKey="Id", IsForeignKey=true)]
+		public visitor visitor
+		{
+			get
+			{
+				return this._visitor.Entity;
+			}
+			set
+			{
+				visitor previousValue = this._visitor.Entity;
+				if (((previousValue != value) 
+							|| (this._visitor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._visitor.Entity = null;
+						previousValue.comments.Remove(this);
+					}
+					this._visitor.Entity = value;
+					if ((value != null))
+					{
+						value.comments.Add(this);
+						this._visitor_id = value.Id;
+					}
+					else
+					{
+						this._visitor_id = default(int);
+					}
+					this.SendPropertyChanged("visitor");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1979,7 +2137,7 @@ namespace SystemProject.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_details", DbType="VarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_details", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
 		public string details
 		{
 			get
@@ -2434,11 +2592,11 @@ namespace SystemProject.Data
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _Id;
 		
 		private int _visitor_id;
 		
-		private int _likes;
+		private bool _likes;
 		
 		private System.DateTime _date_created;
 		
@@ -2446,11 +2604,11 @@ namespace SystemProject.Data
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
     partial void Onvisitor_idChanging(int value);
     partial void Onvisitor_idChanged();
-    partial void OnlikesChanging(int value);
+    partial void OnlikesChanging(bool value);
     partial void OnlikesChanged();
     partial void Ondate_createdChanging(System.DateTime value);
     partial void Ondate_createdChanged();
@@ -2461,22 +2619,22 @@ namespace SystemProject.Data
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._id;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._Id != value))
 				{
-					this.OnidChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
@@ -2501,8 +2659,8 @@ namespace SystemProject.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_likes", DbType="Int NOT NULL")]
-		public int likes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_likes", DbType="Bit NOT NULL")]
+		public bool likes
 		{
 			get
 			{
@@ -2568,9 +2726,7 @@ namespace SystemProject.Data
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
-		
-		private int _user_id;
+		private int _Id;
 		
 		private string _title;
 		
@@ -2596,10 +2752,8 @@ namespace SystemProject.Data
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onuser_idChanging(int value);
-    partial void Onuser_idChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
     partial void OntitleChanging(string value);
     partial void OntitleChanged();
     partial void OndetailsChanging(string value);
@@ -2627,42 +2781,22 @@ namespace SystemProject.Data
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._id;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._Id != value))
 				{
-					this.OnidChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
-		public int user_id
-		{
-			get
-			{
-				return this._user_id;
-			}
-			set
-			{
-				if ((this._user_id != value))
-				{
-					this.Onuser_idChanging(value);
-					this.SendPropertyChanging();
-					this._user_id = value;
-					this.SendPropertyChanged("user_id");
-					this.Onuser_idChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}

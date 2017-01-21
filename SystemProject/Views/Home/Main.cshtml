@@ -11,149 +11,318 @@
 @Styles.Render("~/font-awesome/css")
 @Html.Partial("MainHeader")
 <body>
-    <div class="row main-container">
-        <div class="col-md-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="category">Category</label>
-                        <br />
-                        <input type="text" name="category" id="categoryname" class="form-control" />
-                        <br />
-                        <label for="categorydesc">Category Description</label>
-                        <br />
-                        <input type="text" name="categorydesc" id="categorydesc" class="form-control" />
-                        <br />
-                        <label for="title">Title</label>
-                        <br />
-                        <input type="text" name="title" id="title" class="form-control" />
-                        <br />
-                        <label for="details">Details</label>
-                        <br />
-                        <textarea type="text" name="details" id="details" class="form-control" rows="15" cols="15"></textarea>
-                        <br />
-                        <label for="contactperson">Contact Person</label>
-                        <br />
-                        <input type="text" name="contactperson" id="contactperson" class="form-control" />
-                        <br />
-                        <label for="contactnumber">Contact Number</label>
-                        <br />
-                        <input type="text" name="contactnumber" id="contactnumber" class="form-control" />
-                        <br />
-                        <label for="website">Website</label>
-                        <br />
-                        <input type="text" name="website" id="website" class="form-control" />
-                        <br />
-                        <label for="date">Date Post</label>
-                        <br />
-                        <input type="date" name="date" id="date" class="form-control" />
-                        <br />
-                        @*<label for="photo">Images</label>
-                        <br />
-                        <input type="file" name="photo" id="photo" class="form-control" />
-                        <br />*@
-                        <label for="active">Active</label>
-                        <br />
-                        <input type="checkbox" name="active" id="active" class="" />
-                        <br /><br />
-                        <button type="submit" class="btn btn-info btn-block" onclick="addPostItem()">Post</button>
-                    </div>
-                    <div class="col-md-8">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
+    <div class="container">
+        <div class="row main-container">
+            <div class="col-md-2">
 
-                    </div>
-                    <div class="col-md-7" >
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td class="hot">Hot Sales</td>
-                                    <td class="sales">Item Sales</td>
-                                    <td class="most">Most Viewed Items</td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <br /><br /><br />
-                        <div class="row" style="border:1px solid black; ">
-                            <div class="col-md-12">
-                                <h5>Category</h5>
-                                <hr />
-                                <h5>Category Description</h5>
-                                <hr />
-                                <h5>Title</h5>
-                                <hr />
-                                <h5>Details</h5>
-                                <hr />
-                                <h5>Category</h5>
-                                <hr />
-                                <h5>Contact Person</h5>
-                                <hr />
-                                <h5>Contact Number</h5>
-                                <hr />
-                                <div class="row" style="border:1px solid black; height:100px;">
-                                    <div class="col-md-12">
-                                        Comment Here
+                @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <label for="category">Category</label>
+                                            <br />
+                                            <input type="text" name="category" id="categoryname" class="form-control" />
+                                            <br />
+                                            <label for="categorydesc">Category Description</label>
+                                            <br />
+                                            <input type="text" name="categorydesc" id="categorydesc" class="form-control" />
+                                            <br />
+                                            <label for="title">Title</label>
+                                            <br />
+                                            <input type="text" name="title" id="title" class="form-control" />
+                                            <br />
+                                            <label for="details">Details</label>
+                                            <br />
+                                            <textarea type="text" name="details" id="details" class="form-control" rows="15" cols="15"></textarea>
+                                            <br />
+                                            <label for="contactperson">Contact Person</label>
+                                            <br />
+                                            <input type="text" name="contactperson" id="contactperson" class="form-control" />
+                                            <br />
+                                            <label for="contactnumber">Contact Number</label>
+                                            <br />
+                                            <input type="text" name="contactnumber" id="contactnumber" class="form-control" />
+                                            <br />
+                                            <label for="website">Website</label>
+                                            <br />
+                                            <input type="text" name="website" id="website" class="form-control" />
+                                            <br />
+                                            <label for="date">Date Post</label>
+                                            <br />
+                                            <input type="date" name="date" id="date" class="form-control" />
+                                            <br />
+                                            <label for="photo">Images</label>
+                                            <br />
+                                            <input type="file" name="photo" id="photo" class="form-control" />
+                                            <br />
+                                            <label for="active">Active</label>
+                                            <br />
+                                            <input type="checkbox" name="active" id="active" class="" />
+                                            <br /><br />
+                                            <button type="submit" class="btn btn-info btn-block" onclick="addPostItem()">Post</button>
+                                        </div>
+                                        <div class="col-md-3">
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
+                    </div>*@
+            </div>
+            <div class="col-md-8">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Post</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Hot Deals</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Discounted Items</a></li>
+                    <li><a data-toggle="tab" href="#menu3">Most Viewed Items</a></li>
+                </ul>
 
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <h3>All Post</h3>
+                        <div style="width: 100%; height: 50px;"></div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div id="postDetailGrid"></div>
+                            </div>
+                            <div class="panel-footer">
+                                <div>
+                                    <textarea rows="20" cols="100" name="commentbox" id="commentbox" placeholder="Comment here.." class="form-control"></textarea>
+                                    <br />
+                                    <button type="submit" name="comment" onclick="addComment()" class="btn btn-default">Comment</button>
+                                </div>
+                                <div id="commentDetailGrid">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <h3>Menu 1</h3>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <h3>Menu 2</h3>
+                    </div>
+                    <div id="menu3" class="tab-pane fade">
+                        <h3>Menu 3</h3>
                     </div>
                 </div>
+
+            </div>
+            <div class="col-md-2">
+
             </div>
         </div>
-        <div class="col-md-3">
-
-        </div>
     </div>
-</body>
-@Html.Partial("HomeFooter")
-</html>
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/jquery")
-<script type="text/javascript">
-    console.log(getPostData());
 
-    function getPostData() {
-        var postObject = new Object();
-        postObject.categoryname = document.getElementById("categoryname").value;
-        postObject.categorydescription = document.getElementById("categorydesc").value;
-        postObject.title = document.getElementById("title").value;
-        postObject.details = document.getElementById("details").value;
-        postObject.contact_person = document.getElementById("contactperson").value;
-        postObject.contact_number = document.getElementById("contactnumber").value;
-        postObject.website = document.getElementById("website").value;
-        postObject.date_created = new Date(document.getElementById("date").value);
-        //postObject.photo = document.getElementById("photo").value;
-        postObject.is_active = document.getElementById("active").checked;
-        return JSON.stringify(postObject)
-    }
 
-    function addPostItem() {
-        $.ajax({
-            type: "POST",
-            url: '/api/post/add',
-            data: getPostData(),
-            contentType: "application/json;charset=utf-8",
-            statusCode: {
-                200: function () {
-                    toastr.success("Post Success");
-                },
-                400: function (message) {
-                    toastr.error(message.responseText.replace(/"/g, ""), "Bad Request");
+
+
+    @Html.Partial("HomeFooter")
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        //Insert Data in DB
+        function getPostData() {
+            var postObject = new Object();
+            postObject.categoryname = document.getElementById("categoryname").value;
+            postObject.categorydescription = document.getElementById("categorydesc").value;
+            postObject.title = document.getElementById("title").value;
+            postObject.details = document.getElementById("details").value;
+            postObject.contact_person = document.getElementById("contactperson").value;
+            postObject.contact_number = document.getElementById("contactnumber").value;
+            postObject.website = document.getElementById("website").value;
+            postObject.date_created = document.getElementById("date").value;
+            postObject.is_active = document.getElementById("active").checked;
+            //postObject.photo = document.getElementById("photo").value;
+            return JSON.stringify(postObject)
+        }
+
+        function addPostItem() {
+            $.ajax({
+                type: "POST",
+                url: '/api/post/add',
+                data: getPostData(),
+                contentType: "application/json;charset=utf-8",
+                statusCode: {
+                    200: function () {
+                        toastr.success("Post Success");
+                    },
+                    400: function (message) {
+                        toastr.error(message.responseText.replace(/"/g, ""), "Bad Request");
+                    }
                 }
-            }
-        });
-    }
+            });
+        }
 
-    
-</script>
+
+        //Comment
+        function getCommentData() {
+            var commentObject = new Object();
+            commentObject.comment = document.getElementById("commentbox").value;
+            return JSON.stringify(commentObject)
+        }
+
+        function addComment() {
+            $.ajax({
+                type: "POST",
+                url: '/api/comment/add',
+                data: getCommentData(),
+                contentType: "application/json;charset=utf-8",
+                statusCode: {
+                    200: function () {
+                        toastr.success("Comment Success");
+                    },
+                    400: function () {
+                        toastr.error("Oops Something Went Wrong");
+                    }
+                }
+            });
+        }
+
+
+
+
+        //Get Post
+        function getPost() {
+            NProgress.start();
+            var postDetail = new wijmo.collections.ObservableArray;
+            $.ajax({
+                type: "GET",
+                url: '/api/post/list',
+                contentType: "application/json;charset=utf-8",
+                success: function (postDetailList) {
+                    for (i = 0; i < postDetailList.length; i++) {
+                        postDetail.push({
+                            categoryname: postDetailList[i]["categoryname"],
+                            categorydescription: postDetailList[i]["categorydescription"],
+                            title: postDetailList[i]["title"],
+                            details: postDetailList[i]["details"],
+                            contact_person: postDetailList[i]["contact_person"],
+                            contact_number: postDetailList[i]["contact_number"],
+                            website: postDetailList[i]["website"],
+                            is_active: postDetailList[i]["is_active"],
+                            date_created: postDetailList[i]["date_created"]
+                        });
+                    }
+                    NProgress.done();
+                }
+            });
+
+            var postDetailCollections = new wijmo.collections.CollectionView(postDetail);
+
+            //Flex Grid
+            postDetailGrid = new wijmo.grid.FlexGrid("#postDetailGrid");
+            postDetailGrid.initialize({
+                columns: [{
+                    "header": "Category Name",
+                    "binding": "categoryname",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                {
+                    "header": "Category Description",
+                    "binding": "categorydescription",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                {
+
+                    "header": "Title",
+                    "binding": "title",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                {
+
+                    "header": "Details",
+                    "binding": "details",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                {
+
+                    "header": "Contact Person",
+                    "binding": "contact_person",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                {
+
+                    "header": "Contact Number",
+                    "binding": "contact_number",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                {
+
+                    "header": "Websites Or Pages",
+                    "binding": "website",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                {
+
+                    "header": "Active",
+                    "binding": "is_active",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                {
+
+                    "header": "Date Created",
+                    "binding": "date_created",
+                    "allowSorting": true,
+                    "width": 120,
+                    "allowResizing": true,
+                    "allowSorting": false,
+                    "isContentHtml": true
+                },
+                ],
+                autoGenerateColumns: false,
+                itemsSource: postDetailCollections,
+                isReadOnly: true,
+                autoSizeMode: wijmo.grid.AutoSizeMode.Both,
+                allowDragging: wijmo.grid.AllowDragging.None,
+                selectionMode: wijmo.grid.SelectionMode.Row
+            });
+            postDetailGrid.trackChanges = true;
+        }
+
+        window.onload = function () {
+            getPost();
+        }
+    </script>
+</body>
+</html>
